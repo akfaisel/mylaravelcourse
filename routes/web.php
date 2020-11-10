@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EmployeesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/employees', [EmployeesController::class, 'index']);
+
 Route::get('/about', function () {
     return view('pages.about');
 });
@@ -27,6 +30,10 @@ Route::get('/contact', function () {
 
 Route::get('/pricing', function () {
     return view('pages.pricing');
+});
+
+Route::get('/support', function () {
+    return view('pages.support');
 });
 
 Route::get('/demo', function () {
