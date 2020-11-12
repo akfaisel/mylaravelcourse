@@ -19,6 +19,8 @@ Route::get('/', function () {
 });
 
 Route::get('/employees', [EmployeesController::class, 'index']);
+Route::get('/employees/create', [EmployeesController::class, 'create']);
+Route::post('/employees', [EmployeesController::class, 'store']);
 
 Route::get('/about', function () {
     return view('pages.about');

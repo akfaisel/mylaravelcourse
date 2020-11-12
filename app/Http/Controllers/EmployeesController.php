@@ -23,9 +23,8 @@ class EmployeesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create() {
+        return view('employees.create');
     }
 
     /**
@@ -34,9 +33,16 @@ class EmployeesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        $row = new Employee();
+        $row->name = $request->name;
+        $row->email = $request->email;
+        $row->age = $request->age;
+        $row->position = $request->position;
+        $row->grade = $request->grade;
+        $row->save();
+
+        return redirect('/employees');
     }
 
     /**
