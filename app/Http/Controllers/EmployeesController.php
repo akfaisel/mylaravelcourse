@@ -15,7 +15,7 @@ class EmployeesController extends Controller
     public function index()
     {
         $rows = Employee::all(); //print_r($rows);
-        return view('employees.index', ['rows'=>$rows]);
+        return view('employees.index', ['rows' => $rows]);
     }
 
     /**
@@ -64,7 +64,8 @@ class EmployeesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $row = Employee::find($id);
+        return view('employees.edit', ['row' => $row]);
     }
 
     /**
@@ -76,7 +77,15 @@ class EmployeesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $row = Employee::find($id);
+        $row->name = $request->name;
+        $row->email = $request->email;
+        $row->age = $request->age;
+        $row->position = $request->position;
+        $row->grade = $request->grade;
+        $row->save();
+
+        return redirect('/employees');
     }
 
     /**
@@ -87,6 +96,8 @@ class EmployeesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $row = Employee::find($id);
+        $row->delete();
+        return redirect('/employees');
     }
 }

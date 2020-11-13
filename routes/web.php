@@ -21,6 +21,9 @@ Route::get('/', function () {
 Route::get('/employees', [EmployeesController::class, 'index']);
 Route::get('/employees/create', [EmployeesController::class, 'create']);
 Route::post('/employees', [EmployeesController::class, 'store']);
+Route::get('/employees/{id}/edit', [EmployeesController::class, 'edit']);
+Route::put('/employees/{id}', [EmployeesController::class, 'update']);
+Route::get('/employees/{id}/delete', [EmployeesController::class, 'destroy']);
 
 Route::get('/about', function () {
     return view('pages.about');
